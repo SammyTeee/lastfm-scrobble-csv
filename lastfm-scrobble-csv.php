@@ -152,7 +152,7 @@ function doApiInTheFace($parameters, $method = 'POST') {
     curl_close($curl);
 }
 
-if (!empty($sessionId))) {
+if (!empty($sessionId)) {
 	$tracks = assoc_getcsv($csv);
 
 	for ($i = 0; $i < count($tracks); $i += $tracksPerBatch) {
