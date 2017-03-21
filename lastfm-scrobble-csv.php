@@ -45,15 +45,15 @@ $tracksPerBatch = 50;
 function assoc_getcsv($csv_path) {
     $f = [];
 
-    function parse_csv_assoc($str, &$f) { 
+    $parse_csv_assoc = function($str) use (&$f) {
         if (empty($f)) {
             $f = str_getcsv($str);
         }
 
-        return array_combine($f, str_getcsv($str));         
-    }
+        return array_combine($f, str_getcsv($str));
+    };
 
-    return array_values(array_slice(array_map('parse_csv_assoc', file($csv_path), $f), 1));
+    return array_values(array_slice(array_map($parse_csv_assoc, file($csv_path)), 1));
 }
 
 function generateApiSignature($parameters) {
